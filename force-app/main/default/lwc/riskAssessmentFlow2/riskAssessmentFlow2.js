@@ -18,6 +18,7 @@ export default class RiskAssessmentFlow2 extends NavigationMixin(LightningElemen
     @track nomeContato = '';
     @track telefoneContato = '';
     @track emailContato = '';
+    @track GLB_Contact_Number_ID = null;
 
     mostrarCalcularCategoriaRisco = false;
     respostas = new Map();
@@ -223,6 +224,9 @@ export default class RiskAssessmentFlow2 extends NavigationMixin(LightningElemen
         } else if (field === 'emailContato') {
             this.emailContato = evt.target.value;
         }
+        else if (field === 'GLB_Contact_Number_ID') {
+            this.GLB_Contact_Number_ID = evt.target.value;
+        }
     }
 
     handleClickAbrirChamado(evt) {
@@ -260,6 +264,9 @@ export default class RiskAssessmentFlow2 extends NavigationMixin(LightningElemen
             if (this.emailContato === '') {
                 this.emailContato = this.riskCategory.data.email;
             }
+            if (this.GLB_Contact_Number_ID === null) {
+                this.GLB_Contact_Number_ID = this.riskCategory.data.GLB_Contact_Number_ID;
+            }
 
             let createUpdateCaseRequest = {
                 riskCategoryId: this.riskCategory.data.categoryId,
@@ -267,7 +274,8 @@ export default class RiskAssessmentFlow2 extends NavigationMixin(LightningElemen
                 idRegistro: this.recordId,
                 nomeContato: this.nomeContato,
                 email: this.emailContato,
-                phone: this.telefoneContato
+                phone: this.telefoneContato,
+                GLB_Contact_Number_ID: this.GLB_Contact_Number_ID
             };
 
             createUpdateCase({request: createUpdateCaseRequest})

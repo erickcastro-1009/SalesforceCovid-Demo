@@ -220,6 +220,10 @@ public class RiskAssessmentFlowController {
         return sectionList;
     }
 
+    /* 
+    * Method made to update the Status of the Case according to the Category Name
+    * The parameter catName will be bring the name of the Category and it will be assigned to the Case's Status
+    */
     @AuraEnabled
     public static void updateCase(String catName, Id idRegistro){
         List<Case> ca = [SELECT Id, Status FROM Case WHERE Id =: idRegistro LIMIT 1];

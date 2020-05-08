@@ -225,8 +225,6 @@ public class RiskAssessmentFlowController {
         List<Case> ca = [SELECT Id, Status FROM Case WHERE Id =: idRegistro LIMIT 1];
         ca[0].Status = catName;
         Case c = ca[0];
-        System.debug('Status Case: '+ca[0].Status);
-        System.debug('Status Case: '+c.Status);
         update c;
     }
 

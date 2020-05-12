@@ -1,11 +1,11 @@
 import { LightningElement, wire, api, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from 'lightning/navigation';
+import { updateRecord } from 'lightning/uiRecordApi';
 import createUpdateCase from '@salesforce/apex/RiskAssessmentFlowController.createUpdateCase';
 import getRiskAssessmentQuestionaire from '@salesforce/apex/RiskAssessmentFlowController.getRiskAssessmentQuestionaire';
 import getRiskAssessmentCategory from '@salesforce/apex/RiskAssessmentFlowController.getRiskAssessmentCategory';
 import updateCase from '@salesforce/apex/RiskAssessmentFlowController.updateCase';
-import { updateRecord } from 'lightning/uiRecordApi';
 
 export default class RiskAssessmentFlow extends NavigationMixin(LightningElement) {
     @wire(getRiskAssessmentQuestionaire, {defName: '$riskAssessmentDefinitionName'}) sections;    
